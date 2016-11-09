@@ -48,6 +48,6 @@ function getRandomActivity() {
 		console.log(i);
 		var reps = Math.floor(Math.random() * (1 + matches[i]['range'])) * 2.0 - matches[i]['range'] + matches[i]['median'];
 		activityFormatted = activityFormatted.substr(0,matches[i]['at']) + reps + activityFormatted.substr(matches[i]['at'] + matches[i]['length'], activityFormatted.length);
-	} //at the end, activityFormatted is formatted
+	} //now, activityFormatted is formatted
 	console.log(activityFormatted);
 }
