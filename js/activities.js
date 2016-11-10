@@ -11,7 +11,7 @@ var activities = [
 	"Make %10,3 small circles with your arms.",
 	"Jump over a pencil %8,3 times.",
 	"Jump as high as you can %8,3 times.",
-	"Do %10,4 situps",
+	"Do %10,4 situps.",
 	"Do %10,4 crunches",
 	"Take a fighting stance, jab %13,4 times, and cross %12,5 times.",
 	"Climb %9,3 rungs of an invisible ladder.",
@@ -33,21 +33,64 @@ var activities = [
 
 var regex = /%\d+,\d+/g;
 
-function getRandomActivity() {
-	var activityUnformatted = activities[Math.floor(Math.random() * activities.length)];
-	console.log(activityUnformatted);
+function fillRandomNumbers(string) {
 	var matches = [];
-	while (match = regex.exec(activityUnformatted)) {
+	while (match = regex.exec(string)) {
 		var str = match["0"];
 		var strNumbers = str.split("%")[1].split(",");
 		matches.push({at: match.index, median: parseInt(strNumbers[0], 10), range: parseInt(strNumbers[1], 10), length: str.length});
 	}
-	console.log(matches);
-	var activityFormatted = activityUnformatted;
 	for (var i = matches.length - 1; i >= 0; i--) {
-		console.log(i);
 		var reps = Math.floor(Math.random() * (1 + matches[i]['range'])) * 2.0 - matches[i]['range'] + matches[i]['median'];
-		activityFormatted = activityFormatted.substr(0,matches[i]['at']) + reps + activityFormatted.substr(matches[i]['at'] + matches[i]['length'], activityFormatted.length);
-	} //now, activityFormatted is formatted
-	console.log(activityFormatted);
+		string = string.substr(0,matches[i]['at']) + reps + string.substr(matches[i]['at'] + matches[i]['length'], string.length);
+	}
+	return string;
+}
+
+function fillWithRandomNumbers(array) {
+	for (var i = 0; i < array.length; i++) {
+		array[i] = fillRandomNumbers(array[i]);
+	}
+}
+
+function shuffleArray(array) {
+	var newLocations = [];
+	var unmodArray = array.slice();
+	for (var i = array.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+    for (var i = 0; i < array.length; i++) {
+    	newLocations.push(unmodArray.indexOf(array[i]));
+    }
+    console.log(newLocations)
+    return newLocations;
+}
+
+function generateActivityList() {
+	var randomArray = activities.slice();
+	fillWithRandomNumbers(randomArray);
+	var arrayOrder = shuffleArray(randomArray);
+	console.log(randomArray);
+	console.log(arrayOrder);
+	return {randomArray: randomArray, arrayOrder: arrayOrder};
+}
+
+var randomArray = [];
+var randomArrayOrder = [];
+
+function getNextActivity() {
+	if (randomArray.length == 0) {
+		var arrayAndOrder = generateActivityList();
+		randomArray = arrayAndOrder.randomArray;
+		randomArrayOrder = arrayAndOrder.arrayOrder;
+		localforage.setItem("randomArrayOrder", randomArrayOrder);
+	}
+	var activity = randomArray.pop();
+	var order = randomArrayOrder[randomArray.length];
+	localforage.setItem("randomArray", randomArray);
+	console.log(randomArray);
+	return {activity: activity, order: order}
 }

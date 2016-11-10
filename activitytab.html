@@ -2,18 +2,21 @@
 <html>
 	<head>
 		<link rel="stylesheet" type="text/css" href="activitytab.css" />
+		<script type="text/javascript" src="js/localforage.min.js"></script>
+		<script type="text/javascript" src="js/activities.js"></script>
 		<script type="text/javascript" src="activitytab.js"></script>
 		<title>StayActive</title>
 	</head>
 	<body>
 		<div id="titleDiv">
-			<h1>StayActive</h1>
+			<h3>StayActive</h3>
 		</div>
+		<div id="activityDiv"></div>
 		<div id="doneDiv">
-			<button type="button">Done!</button>
+			<button type="button" id="doneButton">Done!</button>
 		</div>
 		<div id="resetDiv">
-			<button type="button">New Activity</button>
+			<button type="button" id="resetButton">New Activity</button>
 		</div>
 	</body>
 </html>
