@@ -6,6 +6,13 @@ button {
 	font-size:48px;
 }
 
+html, body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+
 body, body.theme0 {
 	background-color: blueviolet;
 }
@@ -108,7 +115,8 @@ body.theme11 {
 	background-size:100px 100px, 100px 100px, 50px 50px, 50px 50px;
 }
 body.theme12 {
-	background-color: blueviolet;
+	background: radial-gradient(circle, #8400FF, #BB70FF);
+	background-color: #A038FF;
 }
 body.theme13 {
 	background-color:#556;
@@ -135,6 +143,7 @@ body.theme15 {
 		repeating-linear-gradient(125deg, transparent, transparent 2px, rgba(0,0,0,.2) 2px, rgba(0,0,0,.2) 3px, transparent 3px, transparent 5px, rgba(0,0,0,.2) 5px);
 }
 body.theme16 {
+	/*BROKEN*/
 	background-color: hsl(34, 53%, 82%);
 	background-image: repeating-linear-gradient(45deg, transparent 5px, hsla(197, 62%, 11%, 0.5) 5px, hsla(197, 62%, 11%, 0.5) 10px,                  
 			hsla(5, 53%, 63%, 0) 10px, hsla(5, 53%, 63%, 0) 35px, hsla(5, 53%, 63%, 0.5) 35px, hsla(5, 53%, 63%, 0.5) 40px,
@@ -152,7 +161,8 @@ body.theme16 {
 		);
 }
 body.theme17 {
-	background-color: blueviolet;
+	background: linear-gradient(red, blue);
+	background-color: #800080;
 }
 body.theme18 {
 	background-color: #026873;
