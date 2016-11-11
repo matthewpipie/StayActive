@@ -19,7 +19,8 @@ body.theme1 {
 	background-size: 20px 20px;
 }
 body.theme2 {
-	background-color: blueviolet;
+	background: linear-gradient(to right, blue, red, blue);
+	background-color: #f00; /*not visible*/
 }
 body.theme3 {
 	background:

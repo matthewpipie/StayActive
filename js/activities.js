@@ -12,7 +12,7 @@ var activities = [
 	"Jump over a pencil %8,3 times.",
 	"Jump as high as you can %8,3 times.",
 	"Do %10,4 situps.",
-	"Do %10,4 crunches",
+	"Do %10,4 crunches.",
 	"Take a fighting stance, jab %13,4 times, and cross %12,5 times.",
 	"Climb %9,3 rungs of an invisible ladder.",
 	"Wall sit for %15,5 seconds.",
