@@ -6,7 +6,7 @@ button {
 	font-size:48px;
 }
 
-body.theme0 {
+body, body.theme0 {
 	background-color: blueviolet;
 }
 
